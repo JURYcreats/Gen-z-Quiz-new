@@ -6,7 +6,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle at top, #0b1d3a, #050b16);
+  background: radial-gradient(circle at top, #b3eff2, #050b16);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,4 +173,40 @@ body {
 
 #app, .container, .quiz, .card {
   display: block !important;
+}
+.ad-box {
+  margin: 30px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  border: 1px dashed #4da3ff;
+  color: #bcdcff;
+  border-radius: 12px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.ad-box p {
+  margin: 0;
+}.share-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.share-box button {
+  background: #4da3ff;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  margin: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.share-box button:hover {
+  opacity: 0.85;
+}
+.result-card {
+  text-align: center;
 }
