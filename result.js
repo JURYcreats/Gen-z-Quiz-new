@@ -24,3 +24,20 @@ function restartQuiz() {
   localStorage.removeItem("genzScore");
   window.location.href = "quiz.html";
 }
+function shareWhatsApp() {
+  const text = "I just checked if I'm Gen Z 😎🔥 Try it here:";
+  const url = window.location.href;
+  window.open(
+    `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
+    "_blank"
+  );
+}
+
+function shareTwitter() {
+  const text = "Are you really Gen Z? 👀🔥";
+  const url = window.location.href;
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+    "_blank"
+  );
+}
