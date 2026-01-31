@@ -44,6 +44,22 @@ const questions = [
       { text: "Avoid it", points: 0 }
     ]
   }
+  {
+  question: "What does 'no cap' mean?",
+  options: ["No lie", "No hat", "No money", "No time"],
+  answer: 0
+},
+{
+  question: "What is 'mid'?",
+  options: ["Average", "Amazing", "Bad", "Fast"],
+  answer: 0
+},
+{
+  question: "What does 'bet' mean?",
+  options: ["Okay/Yes", "Gamble", "Fight", "Cancel"],
+  answer: 0
+}
+
 ];
 
 let current = 0;
@@ -96,3 +112,4 @@ nextBtn.onclick = () => {
 };
 
 loadQuestion();
+
