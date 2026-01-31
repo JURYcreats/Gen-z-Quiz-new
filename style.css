@@ -1,38 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-  background: #0b1c2d;
+  height: 100vh;
+  background: linear-gradient(135deg, #07111f, #0d2a45, #05101d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
 }
 
+/* CARD */
 .container {
-  margin-top: 80px;
+  width: 380px;
+  background: rgba(12, 22, 40, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  text-align: center;
+  animation: fadeIn 0.4s ease;
 }
 
+/* TITLES */
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 15px 0;
+}
+
+#progress {
+  color: #6fb7ff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* BUTTONS */
 button {
-  padding: 12px 25px;
-  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
   border: none;
-  border-radius: 8px;
-  background: #1e90ff;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #1e90ff, #00c6ff);
   color: white;
+  font-size: 15px;
   cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30,144,255,0.4);
 }
 
 button:disabled {
-  background: gray;
+  background: #444;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
+/* OPTIONS */
+.option {
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: #10253f;
+  border: 1px solid #1e3a5f;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #1e90ff;
+  border-color: #1e90ff;
+}
+
+/* RESULT TEXT */
+#resultTitle {
+  font-size: 26px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg,#1e90ff,#00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* UTIL */
 .hidden {
   display: none;
 }
 
-.option {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 200px;
-  background: #132f4c;
-  border-radius: 6px;
-  cursor: pointer;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
