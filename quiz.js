@@ -1,5 +1,11 @@
 // QUESTIONS
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const progressEl = document.getElementById("progress");
+
 const questions = [
+
   {
     question: "What does 'rizz' mean?",
     options: ["Money", "Charm", "Anger", "Nothing"],
@@ -72,3 +78,4 @@ nextBtn.addEventListener("click", () => {
 
 // START
 loadQuestion();
+
