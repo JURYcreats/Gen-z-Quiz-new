@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta charset="UTF-8">
-  <title>Your Result</title>
-  <link rel="stylesheet" href="result.css">
+  <title>Quiz Result</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      padding: 40px;
+    }
+    .box {
+      background: #222;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="result-card">
-    <h4>YOUR RESULT</h4>
-
-    <div class="result-title" id="resultTitle">
-      FULL GEN Z 🔥
-    </div>
-
-    <p class="result-desc" id="resultDesc">
-      You live online, speak fluent internet, and sleep is optional 💀
-    </p>
-
-    <p class="score" id="scoreText">
-      Score: 80 / 100
-    </p>
-
-    <button class="retry-btn" onclick="restartQuiz()">
-      Take Quiz Again
-    </button>
-    <div class="share-box">
-  <h3>Share your result 🚀</h3>
-
-  <button onclick="shareWhatsApp()">WhatsApp</button>
-  <button onclick="shareTwitter()">Twitter / X</button>
+<div class="box">
+  <h1>Your Result</h1>
+  <p id="scoreText"></p>
+  <p id="genzText"></p>
+  <button onclick="restart()">Try Again</button>
 </div>
 
-  </div>
- <div class="ad-box">
-  <p>Advertisement</p>
-</div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const score = params.get("score");
 
-  <script src="result.js"></script>
+  document.getElementById("scoreText").innerText =
+    "Your Score: " + score;
+
+  let result = "";
+
+  if (score <= 30) result = "Not Gen Z ❌";
+  else if (score <= 60) result = "Maybe Gen Z 🤔";
+  else if (score <= 80) result = "Half Gen Z 😎";
+  else result = "Full Gen Z 🔥";
+
+  document.getElementById("genzText").innerText = result;
+
+  function restart() {
+    window.location.href = "index.html";
+  }
+</script>
+
 </body>
 </html>
-
-
