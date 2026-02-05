@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta charset="UTF-8">
-  <title>Gen Z Quiz</title>
+  <title>Are You Gen Z?</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
-
-  <!-- INTRO -->
-  <div id="intro">
+  <div class="card intro-card">
     <h1>Are You Gen Z?</h1>
-    <button onclick="startQuiz()">Start Quiz</button>
-  </div>
 
-  <!-- QUIZ -->
-  <div id="quiz" class="hidden">
-    <p id="progress"></p>
-    <h2 id="question"></h2>
-    <div id="options"></div>
-    <button id="nextBtn" disabled onclick="nextQuestion()">Next</button>
-  </div>
+    <p class="subtitle">
+  Answer 5 questions and find out how Gen Z you really are 👀
+</p>
 
-  <!-- RESULT -->
-  <div id="result" class="hidden">
-    <h1 id="resultTitle"></h1>
-    <p id="scoreText"></p>
-    <button onclick="location.reload()">Try Again</button>
-  </div>
+<img src="genz.png" class="intro-image">
 
+    <div class="intro-image">
+      <img src="intro.jpg" alt="Gen Z vibe">
+    </div>
+<div class="image-wrap">
+  <img src="genz.png" class="intro-image">
 </div>
 
-<script src="script.js"></script>
+    <a href="quiz.html">
+      <button class="start-btn">Start Quiz</button>
+
+    </a>
+  </div>
+<!-- Ad Placeholder -->
+<div class="ad-box">
+  <p>Advertisement</p>
+</div>
+
 </body>
 </html>
+
+
+
