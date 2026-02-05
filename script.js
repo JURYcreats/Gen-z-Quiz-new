@@ -1,84 +1,98 @@
 const questions = [
   {
-    question: "What does 'rizz' mean?",
-    options: ["Charm", "Food", "Dance"],
-    points: [20, 0, 0]
+    question: "Do you use social media daily?",
+    options: [
+      { text: "Yes, all the time", points: 20 },
+      { text: "Sometimes", points: 15 },
+      { text: "Rarely", points: 5 },
+      { text: "Never", points: 0 }
+    ]
   },
   {
-    question: "Fav platform?",
-    options: ["Instagram", "YouTube", "Facebook"],
-    points: [20, 20, 0]
+    question: "Which app do you open first?",
+    options: [
+      { text: "Instagram / YouTube", points: 20 },
+      { text: "WhatsApp", points: 15 },
+      { text: "Browser", points: 5 },
+      { text: "None", points: 0 }
+    ]
   },
   {
-    question: "How often online?",
-    options: ["24/7", "Few hours", "Rarely"],
-    points: [20, 10, 0]
+    question: "How do you talk to friends?",
+    options: [
+      { text: "Voice notes", points: 20 },
+      { text: "Texts", points: 15 },
+      { text: "Calls", points: 5 },
+      { text: "In person only", points: 0 }
+    ]
   },
   {
-    question: "Use short forms?",
-    options: ["Always", "Sometimes", "Never"],
-    points: [20, 10, 0]
+    question: "How often do you follow trends?",
+    options: [
+      { text: "Always", points: 20 },
+      { text: "Sometimes", points: 15 },
+      { text: "Rarely", points: 5 },
+      { text: "Never", points: 0 }
+    ]
   },
   {
-    question: "Voice notes or text?",
-    options: ["Voice", "Text", "Calls"],
-    points: [10, 20, 0]
+    question: "Your relationship with tech?",
+    options: [
+      { text: "Love it", points: 20 },
+      { text: "Need it", points: 15 },
+      { text: "Okay", points: 5 },
+      { text: "Avoid it", points: 0 }
+    ]
   }
 ];
 
-let currentQ = 0;
+let current = 0;
 let score = 0;
+let selectedPoints = null;
 
-function startQuiz() {
-  document.getElementById("intro").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-  showQuestion();
-}
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const progressEl = document.getElementById("progress");
 
-function showQuestion() {
-  const q = questions[currentQ];
-  document.getElementById("progress").innerText =
-    `Question ${currentQ + 1} of ${questions.length}`;
-  document.getElementById("question").innerText = q.question;
+function loadQuestion() {
+  const q = questions[current];
 
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = "";
-  document.getElementById("nextBtn").disabled = true;
+  questionEl.textContent = q.question;
+  progressEl.textContent = `Question ${current + 1} of ${questions.length}`;
 
-  q.options.forEach((opt, index) => {
+  optionsEl.innerHTML = "";
+  nextBtn.disabled = true;
+  selectedPoints = null;
+
+  q.options.forEach(opt => {
     const btn = document.createElement("button");
-    btn.className = "option";
-    btn.innerText = opt;
-    btn.onclick = () => selectOption(index);
-    optionsDiv.appendChild(btn);
+    btn.className = "option-btn";
+    btn.textContent = opt.text;
+
+    btn.onclick = () => {
+      document.querySelectorAll(".option-btn")
+        .forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+      selectedPoints = opt.points;
+      nextBtn.disabled = false;
+    };
+
+    optionsEl.appendChild(btn);
   });
 }
 
-function selectOption(index) {
-  score += questions[currentQ].points[index];
-  document.getElementById("nextBtn").disabled = false;
-}
+nextBtn.onclick = () => {
+  score += selectedPoints;
+  current++;
 
-function nextQuestion() {
-  currentQ++;
-  if (currentQ < questions.length) {
-    showQuestion();
+  if (current < questions.length) {
+    loadQuestion();
   } else {
-    showResult();
+    localStorage.setItem("genzScore", score);
+    window.location.href = "result.html";
   }
-}
+};
 
-function showResult() {
-  document.getElementById("quiz").classList.add("hidden");
-  document.getElementById("result").classList.remove("hidden");
-
-  let title = "";
-
-  if (score <= 20) title = "Not Gen Z";
-  else if (score <= 50) title = "Maybe Gen Z";
-  else if (score <= 80) title = "Half Gen Z";
-  else title = "Full Gen Z 🔥";
-
-  document.getElementById("resultTitle").innerText = title;
-  document.getElementById("scoreText").innerText = `Score: ${score}/100`;
-}
+loadQuestion();
